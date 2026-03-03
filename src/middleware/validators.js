@@ -22,7 +22,7 @@ exports.validateLogin = [
 ];
 
 exports.validateVehicle = [
-  check('model', 'Model is required').isIn(['SAVES_PROTOTYPE_V1']),
+  check('model', 'Model is required').isIn(['SAVES_PROTOTYPE_V1', 'SAVES_miniPROTOTYPE_V1']),
   check('variant', 'Variant is required').isIn(['SUV', 'SEDAN']),
   check('plateNumber', 'Plate number is required').not().isEmpty(),
   check('year', 'Year is required').isNumeric(),

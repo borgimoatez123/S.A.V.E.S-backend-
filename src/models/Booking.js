@@ -37,6 +37,19 @@ const bookingSchema = new mongoose.Schema({
     enum: ['unpaid', 'paid'],
     default: 'unpaid'
   },
+  agencyName: {
+    type: String,
+    required: true
+  },
+  adminId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  deliveredToClient: {
+    type: Boolean,
+    default: false
+  },
   pickupLocation: {
     type: String,
     required: [true, 'Please add a pickup location']

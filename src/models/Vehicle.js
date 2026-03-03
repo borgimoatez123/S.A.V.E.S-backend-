@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const vehicleSchema = new mongoose.Schema({
   model: {
     type: String,
-    enum: ['SAVES_PROTOTYPE_V1'],
+    enum: ['SAVES_PROTOTYPE_V1', 'SAVES_miniPROTOTYPE_V1'],
     required: [true, 'Please add a vehicle model']
   },
   variant: {
@@ -48,6 +48,28 @@ const vehicleSchema = new mongoose.Schema({
   images: {
     type: [String],
     default: []
+  },
+  agency: {
+    name: {
+      type: String,
+      trim: true
+    },
+    location: {
+      city: {
+        type: String,
+        trim: true
+      },
+      lat: {
+        type: Number
+      },
+      lng: {
+        type: Number
+      }
+    }
+  },
+  createdBy: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User'
   },
   createdAt: {
     type: Date,

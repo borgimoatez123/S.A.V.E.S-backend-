@@ -85,8 +85,15 @@ exports.getVehicle = asyncHandler(async (req, res, next) => {
 // @route   POST /api/v1/vehicles
 // @access  Private (Admin only)
 exports.createVehicle = asyncHandler(async (req, res, next) => {
-  // Add user to req.body (optional, if we want to track who created it)
-  // req.body.user = req.user.id;
+  if (!req.user.agencyName || !req.user.agencyLocation || !req.user.agencyLocation.city) {
+    return next(new ErrorResponse('Please set agency name and agency location before adding vehicles', 400));
+  }
+
+  req.body.createdBy = req.user.id;
+  req.body.agency = {
+    name: req.user.agencyName,
+    location: req.user.agencyLocation
+  };
 
   const vehicle = await Vehicle.create(req.body);
 
