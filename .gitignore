@@ -32,3 +32,6 @@ build/
 # Temporary files
 *.tmp
 *.temp
+
+# Nested git clone (do not commit)
+src/ai models/traffic sing/S.A.V.E.S/.git/

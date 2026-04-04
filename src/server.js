@@ -22,10 +22,15 @@ const vehicles = require('./routes/vehicles');
 const bookings = require('./routes/bookings');
 const payments = require('./routes/paymentRoutes');
 const users = require('./routes/users');
+const detections = require('./routes/detections');
+const upload = require('./routes/upload');
 
 const app = express();
 
-// Body parser
+// Body parsers
+// express.raw MUST be registered before express.json so ESP32 raw JPEG
+// bodies are not rejected with 415 before reaching the upload route.
+app.use(express.raw({ type: 'image/jpeg', limit: '5mb' }));
 app.use(express.json());
 
 // Dev logging middleware
@@ -45,6 +50,8 @@ app.use('/api/v1/vehicles', vehicles);
 app.use('/api/v1/bookings', bookings);
 app.use('/api/v1/payments', payments);
 app.use('/api/v1/users', users);
+app.use('/api/detections', detections);
+app.use('/api/upload', upload);
 
 app.use(errorHandler);
 
