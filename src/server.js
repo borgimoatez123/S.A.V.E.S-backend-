@@ -25,6 +25,7 @@ const users = require('./routes/users');
 const detections = require('./routes/detections');
 const upload = require('./routes/upload');
 const damages = require('./routes/damages');
+const driverAlerts = require('./routes/driverAlerts');
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use('/api/v1/users', users);
 app.use('/api/detections', detections);
 app.use('/api/upload', upload);
 app.use('/api/damages', damages);
+app.use('/api/driver-alerts', driverAlerts);
 
 app.use(errorHandler);
 
