@@ -10,6 +10,7 @@ exports.createDamage = async (req, res) => {
       distance_debut_mm, distance_fin_mm, delta_distance_mm,
       delta_temps_s, heure_debut, heure_fin,
       seuil_N, masse_kg, location,
+      gps_fixe, satellites, hdop,
     } = req.body;
 
     if (!location || location.latitude === undefined || location.longitude === undefined) {
@@ -29,6 +30,9 @@ exports.createDamage = async (req, res) => {
       heure_fin,
       seuil_N,
       masse_kg,
+      gps_fixe,
+      satellites,
+      hdop:    hdop !== undefined ? parseFloat(hdop) : undefined,
       location,
     });
 

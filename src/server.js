@@ -26,6 +26,7 @@ const detections = require('./routes/detections');
 const upload = require('./routes/upload');
 const damages = require('./routes/damages');
 const driverAlerts = require('./routes/driverAlerts');
+const realtimeLocation = require('./routes/realtimeLocation');
 
 const app = express();
 
@@ -56,6 +57,7 @@ app.use('/api/detections', detections);
 app.use('/api/upload', upload);
 app.use('/api/damages', damages);
 app.use('/api/driver-alerts', driverAlerts);
+app.use('/api/realtime-location', realtimeLocation);
 
 app.use(errorHandler);
 

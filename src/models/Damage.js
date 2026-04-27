@@ -18,6 +18,9 @@ const DamageSchema = new mongoose.Schema({
   heure_fin:           { type: String, trim: true },
   seuil_N:             { type: Number },
   masse_kg:            { type: Number },
+  gps_fixe:            { type: Boolean },
+  satellites:          { type: Number },
+  hdop:                { type: Number },
   location:            { type: locationSchema, required: true },
   createdAt:           { type: Date, default: Date.now },
 });
